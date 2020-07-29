@@ -107,7 +107,7 @@ func (k *Parameters) NewHTTPServer(handler http.Handler) (*http.Server, error) {
 	insecure, _ := strconv.ParseBool(k.Insecure.Value)
 	headersOk := handlers.AllowedHeaders([]string{"X-Requested-With", "Content-Type"})
 	originsOk := handlers.AllowedOrigins([]string{"*"})
-	methodsOk := handlers.AllowedMethods([]string{"GET", "HEAD", "POST", "PUT", "OPTIONS"})
+	methodsOk := handlers.AllowedMethods([]string{"GET", "HEAD", "POST", "DELETE", "OPTIONS"})
 	cosHandler := handlers.CORS(originsOk, headersOk, methodsOk)(handler)
 	if insecure {
 		server := http.Server{
